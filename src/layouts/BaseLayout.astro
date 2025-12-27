@@ -1,0 +1,50 @@
+---
+import { ViewTransitions } from "astro:transitions";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import "../styles/global.css";
+import DemoLayout from "./DemoLayout.astro";
+
+// Fontsource fonts (assuming npm install @fontsource/inter @fontsource/fraunces was run invisibly via package.json deps)
+// Actually we need to import them to be bundled
+import "@fontsource/inter/400.css";
+import "@fontsource/inter/500.css";
+import "@fontsource/fraunces/300.css";
+import "@fontsource/fraunces/400.css"; // For serifs
+
+interface Props {
+    title: string;
+    description?: string;
+}
+
+const {
+    title,
+    description = "A modern recovery studio for calm and precision.",
+} = Astro.props;
+const siteTitle = `${title} | Stillwater`;
+---
+
+<!doctype html>
+<html lang="en" class="scroll-smooth bg-stone-100">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="description" content={description} />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <meta name="generator" content={Astro.generator} />
+        <meta name="robots" content="noindex, nofollow" />
+        <title>{siteTitle}</title>
+        <ViewTransitions />
+    </head>
+    <body
+        class="flex flex-col min-h-screen overflow-x-hidden selection:bg-sage/20 selection:text-ink"
+    >
+        <DemoLayout>
+        <Header />
+        <main class="flex-grow w-full">
+            <slot />
+        </main>
+        <Footer />
+        </DemoLayout>
+    </body>
+</html>

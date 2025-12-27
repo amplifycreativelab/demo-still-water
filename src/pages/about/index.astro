@@ -1,0 +1,72 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import BreathCTA from "../../components/BreathCTA.astro";
+import { Image } from "astro:assets";
+import studioSpace from "../../assets/images/studio-space.png";
+import clinicalAction from "../../assets/images/clinical-action.png";
+---
+
+<BaseLayout title="About">
+    <div class="pt-32 pb-16 px-6 text-center">
+        <h1 class="text-5xl md:text-6xl font-serif text-ink mb-8">
+            The Studio
+        </h1>
+        <p class="text-muted max-w-2xl mx-auto text-lg leading-relaxed">
+            Stillwater was founded on a simple premise: modern life is loud, and
+            true recovery requires silence.
+        </p>
+    </div>
+
+    <section class="max-w-5xl mx-auto px-6 py-16 space-y-24">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div class="h-96 rounded-2xl overflow-hidden relative group">
+                <Image
+                    src={studioSpace}
+                    alt="Minimalist studio interior with natural light"
+                    class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+            </div>
+            <div class="space-y-6">
+                <h2 class="text-3xl font-serif text-ink">
+                    Architecture for the Mind
+                </h2>
+                <p class="text-muted leading-relaxed">
+                    Every corner of our concept studio is designed to reduce
+                    sensory load. Soft light, dampened acoustics, and natural
+                    materials create a container where your nervous system can
+                    finally exhale.
+                </p>
+            </div>
+        </div>
+
+        <div
+            class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center md:flex-row-reverse"
+        >
+            <div class="space-y-6 md:order-2">
+                <h2 class="text-3xl font-serif text-ink">Clinical Precision</h2>
+                <p class="text-muted leading-relaxed">
+                    While our aesthetic is calm, our methods are clinical. We
+                    combine evidence-based structural integration with ancient
+                    recovery modalities to deliver measurable improvements in
+                    mobility and stress resilience.
+                </p>
+            </div>
+            <div
+                class="h-96 rounded-2xl overflow-hidden relative md:order-1 group"
+            >
+                <Image
+                    src={clinicalAction}
+                    alt="Therapist providing structural integration therapy"
+                    class="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                />
+            </div>
+        </div>
+    </section>
+
+    <BreathCTA
+        title="Experience Stillwater."
+        subtitle="We invite you to step out of the noise."
+        ctaText="Book Session"
+        ctaLink="../contact/"
+    />
+</BaseLayout>

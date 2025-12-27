@@ -1,0 +1,48 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import GlassCard from "../../components/GlassCard.astro";
+---
+
+<BaseLayout title="Gift Vouchers">
+    <div class="pt-32 pb-16 px-6 text-center">
+        <span
+            class="text-sage uppercase tracking-[0.2em] text-sm font-medium mb-4 block"
+            >Gifting</span
+        >
+        <h1 class="text-5xl md:text-6xl font-serif text-ink mb-8">
+            Give the Gift of Time
+        </h1>
+        <p class="text-muted max-w-xl mx-auto text-lg leading-relaxed">
+            A Stillwater voucher is more than a transaction; it is permission to
+            stop.
+        </p>
+    </div>
+
+    <section class="max-w-4xl mx-auto px-6 py-12">
+        <GlassCard class="text-center p-12 md:p-16">
+            <h2 class="text-3xl font-serif text-ink mb-8">
+                Digital & Physical Vouchers
+            </h2>
+            <p class="text-muted mb-12 max-w-lg mx-auto">
+                Choose from specific treatments or open credit. Physical
+                vouchers are beautifully embossed and can be collected in-studio
+                or posted.
+            </p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-lg mx-auto">
+                <button
+                    class="px-8 py-4 bg-ink text-white rounded-full hover:bg-sage transition-colors"
+                    >Buy Digital Voucher</button
+                >
+                <button
+                    class="px-8 py-4 border border-ink text-ink rounded-full hover:bg-white transition-colors"
+                    >Request Physical Card</button
+                >
+            </div>
+
+            <p class="text-xs text-muted mt-8 opacity-70">
+                Secured via Stripe. Valid for 3 years.
+            </p>
+        </GlassCard>
+    </section>
+</BaseLayout>

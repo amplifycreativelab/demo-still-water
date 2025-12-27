@@ -1,0 +1,213 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import BreathCTA from "../components/BreathCTA.astro";
+import ServiceCard from "../components/ServiceCard.astro";
+import TherapistCard from "../components/TherapistCard.astro";
+import VoucherBanner from "../components/VoucherBanner.astro";
+import SoftDivider from "../components/SoftDivider.astro";
+import { services } from "../data/services";
+import { therapists } from "../data/therapists";
+import { testimonials } from "../data/testimonials";
+import { Image } from "astro:assets";
+import studioInterior from "../assets/images/studio-interior.png";
+import homeHero from "../assets/images/home-hero.png";
+
+const featuredServices = services.slice(0, 3);
+---
+
+<BaseLayout title="Home">
+    {/* Hero Section */}
+    <section
+        class="min-h-[90vh] flex items-center justify-center relative overflow-hidden px-6 pt-20"
+    >
+        <div class="absolute inset-0 z-0">
+            <Image
+                src={homeHero}
+                alt="Abstract calming water ripple texture"
+                class="w-full h-full object-cover opacity-90"
+                quality="high"
+                loading="eager"
+            />
+            <div class="absolute inset-0 bg-stone-100/30 mix-blend-overlay">
+            </div>
+            <div
+                class="absolute inset-0 bg-gradient-to-b from-stone-50/80 via-transparent to-stone-50"
+            >
+            </div>
+        </div>
+
+        <div
+            class="max-w-4xl mx-auto text-center z-10 space-y-10 animate-fade-in-up relative"
+        >
+            <div class="inline-block relative">
+                <span
+                    class="text-ink uppercase tracking-[0.3em] text-xs font-semibold px-4 py-2 border border-ink/10 rounded-full backdrop-blur-sm bg-stone-100/30"
+                    >Reclaim Your Calm</span
+                >
+            </div>
+
+            <h1
+                class="text-6xl md:text-8xl lg:text-9xl text-ink font-serif leading-[0.9] tracking-tight text-balance drop-shadow-sm"
+            >
+                Silence <br />
+                <span class="italic text-sage-dark font-light">the noise.</span>
+            </h1>
+
+            <p
+                class="text-xl md:text-2xl text-ink/80 max-w-2xl mx-auto leading-relaxed font-light"
+            >
+                A sanctuary for deep recovery and structural precision in the
+                heart of the Riverside District.
+            </p>
+
+            <div
+                class="flex flex-col sm:flex-row gap-6 justify-center items-center pt-8"
+            >
+                <a
+                    href="./contact/"
+                    class="px-10 py-5 bg-ink text-stone-100 rounded-full text-lg font-medium hover:bg-sage transition-all duration-500 shadow-xl shadow-ink/10 hover:shadow-sage/20 hover:-translate-y-1"
+                >
+                    Book Session
+                </a>
+                <a
+                    href="./gift-vouchers/"
+                    class="px-10 py-5 bg-white/20 backdrop-blur-md border border-ink/10 text-ink rounded-full text-lg font-medium hover:bg-white hover:border-transparent transition-all duration-500 hover:-translate-y-1"
+                >
+                    Gift Recovery
+                </a>
+            </div>
+        </div>
+    </section>
+
+    {/* Services Preview */}
+    <section class="py-24 md:py-32 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div
+                class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6"
+            >
+                <div class="max-w-lg">
+                    <h2 class="text-4xl md:text-5xl font-serif text-ink mb-4">
+                        Precision Therapies.
+                    </h2>
+                    <p class="text-muted text-lg">
+                        Curated modalities designed to downregulate the nervous
+                        system.
+                    </p>
+                </div>
+                <a
+                    href="./services/"
+                    class="text-sage hover:text-ink transition-colors pb-1 border-b border-sage/50 hover:border-ink"
+                    >View all services</a
+                >
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                {
+                    featuredServices.map((service) => (
+                        <ServiceCard service={service} />
+                    ))
+                }
+            </div>
+        </div>
+    </section>
+
+    <SoftDivider />
+
+    {/* The Stillwater Experience */}
+    <section class="py-24 px-6 relative">
+        <div
+            class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-center"
+        >
+            <div class="space-y-12 order-2 lg:order-1">
+                <div class="space-y-4">
+                    <h3 class="font-serif text-2xl text-ink">01. Calm</h3>
+                    <p class="text-muted leading-relaxed">
+                        We believe silence is a nutrient. Our studio is
+                        acoustically treated and visually quieting, allowing
+                        your nervous system to fully disengage from the city.
+                    </p>
+                </div>
+                <div class="space-y-4">
+                    <h3 class="font-serif text-2xl text-ink">02. Precision</h3>
+                    <p class="text-muted leading-relaxed">
+                        Touch is intentional. Our therapists trained in
+                        structural integration and clinical remediation, not
+                        just relaxation.
+                    </p>
+                </div>
+                <div class="space-y-4">
+                    <h3 class="font-serif text-2xl text-ink">03. Care</h3>
+                    <p class="text-muted leading-relaxed">
+                        From the tea we serve to the linens we use, every
+                        touchpoint is designed to express respect for your
+                        restorative time.
+                    </p>
+                </div>
+            </div>
+
+            <div
+                class="order-1 lg:order-2 relative h-full min-h-[500px] rounded-3xl overflow-hidden group"
+            >
+                <Image
+                    src={studioInterior}
+                    alt="Serene studio interior with soft lighting and natural textures"
+                    class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
+                />
+            </div>
+        </div>
+    </section>
+
+    {/* Therapists */}
+    <section class="py-24 px-6 bg-pearl/10">
+        <div class="max-w-7xl mx-auto text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-serif text-ink mb-6">
+                Guided by Experts.
+            </h2>
+            <p class="text-muted max-w-xl mx-auto">
+                Our practitioners are selected for their technical excellence
+                and grounding presence.
+            </p>
+        </div>
+
+        <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12">
+            {
+                therapists.map((therapist) => (
+                    <TherapistCard therapist={therapist} />
+                ))
+            }
+        </div>
+    </section>
+
+    {/* Voucher Banner */}
+    <section class="py-24 px-6">
+        <div class="max-w-5xl mx-auto">
+            <VoucherBanner />
+        </div>
+    </section>
+
+    {/* Testimonials */}
+    <section class="py-24 px-6 text-center">
+        <div class="max-w-3xl mx-auto space-y-16">
+            {
+                testimonials.map((t) => (
+                    <div class="space-y-6">
+                        <p class="font-serif text-2xl md:text-3xl text-ink/80 leading-relaxed">
+                            "{t.quote}"
+                        </p>
+                        <div class="text-sm font-medium text-muted uppercase tracking-widest">
+                            — {t.author}
+                        </div>
+                    </div>
+                ))
+            }
+        </div>
+    </section>
+
+    {/* Final Breath CTA */}
+    <BreathCTA
+        title="Begin your recovery."
+        subtitle="Appointments are available daily. We recommend booking 2-3 days in advance."
+        ctaText="Book Now"
+        ctaLink="./contact/"
+    />
+</BaseLayout>

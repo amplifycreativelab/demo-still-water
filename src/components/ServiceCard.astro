@@ -1,0 +1,67 @@
+---
+import GlassCard from "./GlassCard.astro";
+import type { Service } from "../data/services";
+import { Image } from "astro:assets";
+import serviceMassage from "../assets/images/service-massage.png";
+import serviceSauna from "../assets/images/service-sauna.png";
+import serviceFloat from "../assets/images/service-float.png";
+
+interface Props {
+    service: Service;
+}
+
+const { service } = Astro.props;
+
+const images: Record<string, ImageMetadata> = {
+    "service-massage": serviceMassage,
+    "service-sauna": serviceSauna,
+    "service-float": serviceFloat,
+};
+---
+
+<GlassCard class="!p-0 flex flex-col h-full group overflow-hidden">
+    <div class="h-64 overflow-hidden relative">
+        <Image
+            src={images[service.image]}
+            alt={service.name}
+            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+        />
+        <div
+            class="absolute inset-0 bg-ink/5 group-hover:bg-transparent transition-colors duration-500"
+        >
+        </div>
+    </div>
+
+    <div class="p-8 flex flex-col flex-grow">
+        <div class="flex justify-between items-baseline mb-4">
+            <h3 class="text-xl font-serif text-ink">{service.name}</h3>
+            {
+                service.price && (
+                    <span class="text-sm text-muted font-mono">
+                        {service.price}
+                    </span>
+                )
+            }
+        </div>
+
+        <div
+            class="text-sm text-sage uppercase tracking-wider mb-2 font-medium"
+        >
+            {service.duration}
+        </div>
+
+        <p class="text-muted leading-relaxed mb-6 flex-grow">
+            {service.description}
+        </p>
+
+        <div
+            class="mt-auto pt-6 border-t border-pearl/50 flex justify-between items-center"
+        >
+            <span class="text-sm italic text-muted/80">{service.benefit}</span>
+            <span
+                class="text-sage font-medium group-hover:translate-x-1 transition-transform inline-block"
+                >→</span
+            >
+        </div>
+    </div>
+</GlassCard>

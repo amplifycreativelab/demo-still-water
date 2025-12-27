@@ -1,0 +1,54 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import BreathCTA from "../../components/BreathCTA.astro";
+import { services } from "../../data/services";
+---
+
+<BaseLayout title="Pricing">
+    <div class="pt-32 pb-16 px-6 text-center">
+        <h1 class="text-5xl md:text-6xl font-serif text-ink mb-6">
+            Treatment Menu
+        </h1>
+        <p class="text-muted max-w-xl mx-auto text-lg">
+            Transparent pricing for premium care.
+        </p>
+    </div>
+
+    <section class="max-w-3xl mx-auto px-6 py-12">
+        <div
+            class="bg-white/40 backdrop-blur-sm rounded-3xl p-8 md:p-12 border border-white/40 shadow-sm"
+        >
+            <div class="space-y-12">
+                {
+                    services.map((service) => (
+                        <div class="flex flex-col md:flex-row justify-between items-baseline gap-4 border-b border-pearl/50 pb-8 last:border-0 last:pb-0">
+                            <div class="max-w-md">
+                                <h3 class="text-2xl font-serif text-ink mb-2">
+                                    {service.name}
+                                </h3>
+                                <p class="text-muted text-sm leading-relaxed">
+                                    {service.description}
+                                </p>
+                            </div>
+                            <div class="text-right whitespace-nowrap">
+                                <div class="font-mono text-lg text-ink mb-1">
+                                    {service.price}
+                                </div>
+                                <div class="text-xs text-sage uppercase tracking-wider">
+                                    {service.duration}
+                                </div>
+                            </div>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+    </section>
+
+    <BreathCTA
+        title="Commit to consistency."
+        subtitle="Ask about our membership tiers for regular recovery."
+        ctaText="View Memberships"
+        ctaLink="../contact/"
+    />
+</BaseLayout>

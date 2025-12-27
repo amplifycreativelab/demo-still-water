@@ -1,0 +1,47 @@
+---
+import type { Therapist } from "../data/therapists";
+import { Image } from "astro:assets";
+import elaraImg from "../assets/images/elara-vance.png";
+import kaiImg from "../assets/images/kai-sorensen.png";
+
+interface Props {
+    therapist: Therapist;
+}
+
+const { therapist } = Astro.props;
+
+const images: Record<string, ImageMetadata> = {
+    "elara-vance": elaraImg,
+    "kai-sorensen": kaiImg,
+};
+
+const therapistImage = therapist.image ? images[therapist.image] : null;
+---
+
+<div class="text-center group">
+    <div
+        class="w-24 h-24 md:w-32 md:h-32 mx-auto rounded-full bg-stone-200 mb-6 overflow-hidden relative"
+    >
+        {
+            therapistImage ? (
+                <Image
+                    src={therapistImage}
+                    alt={therapist.name}
+                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    width={128}
+                    height={128}
+                />
+            ) : (
+                <div class="absolute inset-0 bg-stone-300" />
+            )
+        }
+    </div>
+
+    <h3 class="text-lg font-serif text-ink mb-1">{therapist.name}</h3>
+    <p class="text-xs text-sage uppercase tracking-wider mb-3">
+        {therapist.role}
+    </p>
+    <p class="text-sm text-muted max-w-xs mx-auto leading-relaxed">
+        {therapist.bio}
+    </p>
+</div>

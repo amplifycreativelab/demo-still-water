@@ -1,0 +1,33 @@
+---
+import { Image } from "astro:assets";
+// Note: We'll use a gradient background if no image is available yet
+---
+
+<div class="relative overflow-hidden rounded-3xl group">
+    <div
+        class="absolute inset-0 bg-gradient-to-br from-pearl to-stone-200 transition-opacity duration-700 opacity-80 group-hover:opacity-100"
+    >
+    </div>
+    <div class="absolute inset-0 opacity-[0.03]"></div>
+
+    <div class="relative p-10 md:p-14 flex flex-col items-center text-center">
+        <span
+            class="text-sage text-sm uppercase tracking-widest mb-4 font-medium"
+            >The Gift of Calm</span
+        >
+        <h3 class="font-serif text-3xl md:text-4xl text-ink mb-6">
+            Give someone the time to stop.
+        </h3>
+        <p class="text-muted max-w-lg mb-8 text-lg">
+            Stillwater vouchers are a physical invitation to slow down.
+            Beautifully packaged and valid for all services.
+        </p>
+
+        <a
+            href="./gift-vouchers/"
+            class="inline-flex items-center justify-center px-8 py-3 bg-white/60 backdrop-blur-sm border border-white/40 text-ink rounded-full hover:bg-white hover:scale-105 transition-all duration-300 shadow-sm"
+        >
+            Purchase Voucher
+        </a>
+    </div>
+</div>
